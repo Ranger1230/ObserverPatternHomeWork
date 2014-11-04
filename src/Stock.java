@@ -12,7 +12,7 @@ public class Stock extends Observable{
 		this.stockSymbol = stockSymbol;
 		this.addObserver(EventManager.getInstance());
 		this.setChanged();
-		this.notifyObservers(stockSymbol);
+		this.notifyObservers(EventType.Create);
 	}
 	
 	public String getStockSymbol() {
@@ -22,7 +22,7 @@ public class Stock extends Observable{
 	public void addStatus (StockStatus stockStatus) {
 		statusList.add(stockStatus);
 		this.setChanged();
-		notifyObservers(stockSymbol);
+		notifyObservers(EventType.Update);
 	}
 	
 	public StockStatus getCurrentStockStatus() {
