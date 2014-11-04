@@ -7,7 +7,7 @@ public class StockBroker implements Observer{
 	
 	private static StockBroker uniqueInstance;
 	
-	private Map<String,Stock> stockList = new HashMap<String,Stock>(0);
+	private Map<String,Stock> stocks = new HashMap<String,Stock>(0);
 		
 	private StockBroker() {}
 	
@@ -21,8 +21,8 @@ public class StockBroker implements Observer{
 	}
 
 	@Override
-	public void update(Observable o, Object arg) {
-		stockList.put(arg.toString(), (Stock) o); 
+	public void update(Observable stock, Object stockSymbol) {
+		stocks.put((String)stockSymbol, (Stock)stock); 
 	}
 	
 	// What does he mean by this?
@@ -31,11 +31,11 @@ public class StockBroker implements Observer{
 	}
 
 	public Stock getStock(String stockSymbol) {
-		return stockList.get(stockSymbol);
+		return stocks.get(stockSymbol);
 	}
 	
 	public StockStatus getCurrentStockStatus(String stockSymbol) {
-		Stock stock = stockList.get(stockSymbol);
+		Stock stock = stocks.get(stockSymbol);
 		return stock.getCurrentStockStatus();
 	}
 
