@@ -11,7 +11,8 @@ public class Stock extends Observable{
 		statusList.add(stockStatus);
 		this.stockSymbol = stockSymbol;
 		this.addObserver(EventManager.getInstance());
-		notifyObservers(stockSymbol);
+		this.setChanged();
+		this.notifyObservers(stockSymbol);
 	}
 	
 	public String getStockSymbol() {
@@ -20,11 +21,11 @@ public class Stock extends Observable{
 	
 	public void addStatus (StockStatus stockStatus) {
 		statusList.add(stockStatus);
+		this.setChanged();
 		notifyObservers(stockSymbol);
 	}
 	
 	public StockStatus getCurrentStockStatus() {
 		return statusList.get(statusList.size()-1);
 	}
-
 }
