@@ -20,7 +20,7 @@ public class StockStatus {
 	}
 	
 	public String toString(){
-		return MessageFormat.format("{0} as of {1}", price, date.toString());
+		return MessageFormat.format("${0} as of {1}", Double.toString(price), date.toString());
 	}
 	
 }

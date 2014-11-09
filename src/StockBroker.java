@@ -1,13 +1,13 @@
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.TreeMap;
 
 public class StockBroker implements Observer{
 	
 	private static StockBroker uniqueInstance;
 	
-	private Map<String,Stock> stocks = new HashMap<String,Stock>(0);
+	private Map<String,Stock> stocks = new TreeMap<String,Stock>(String.CASE_INSENSITIVE_ORDER);
 		
 	private StockBroker() {
 		EventManager.getInstance().Subscribe(this, EventType.Create);
