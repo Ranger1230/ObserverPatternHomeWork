@@ -1,12 +1,13 @@
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 
 public class Stock extends Observable{
 	
 	private String stockSymbol;
 	
-	private ArrayList<StockStatus> statusList = new ArrayList<StockStatus>(0);
+	private List<StockStatus> statusList = new ArrayList<StockStatus>();
 	
 	public Stock(String stockSymbol, StockStatus stockStatus) {
 		statusList.add(stockStatus);

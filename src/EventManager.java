@@ -1,12 +1,13 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
 public class EventManager implements Observer{
 
 	private static EventManager uniqueInstance;
-	private static HashMap<EventType, ArrayList<Observer>> observers = new HashMap<EventType, ArrayList<Observer>>();
+	private static HashMap<EventType, List<Observer>> observers = new HashMap<EventType, List<Observer>>();
 	
 	private EventManager() {}
 	

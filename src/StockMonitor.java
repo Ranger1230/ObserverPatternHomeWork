@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -10,7 +11,7 @@ public class StockMonitor extends Observable implements Observer{
 		EventManager.getInstance().Subscribe(this, EventType.All);
 	}
 	
-	private ArrayList<Stock> stocks = new ArrayList<Stock>();
+	private List<Stock> stocks = new ArrayList<Stock>();
 	
 	public static StockMonitor getInstance() {
 		if (uniqueInstance == null) {
