@@ -1,3 +1,4 @@
+import java.text.MessageFormat;
 import java.util.Date;
 
 public class StockStatus {
@@ -16,6 +17,10 @@ public class StockStatus {
 	
 	public double getPrice() {
 		return price;
+	}
+	
+	public String toString(){
+		return MessageFormat.format("{0} as of {1}", price, date.toString());
 	}
 	
 }

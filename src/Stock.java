@@ -1,3 +1,4 @@
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Observable;
 
@@ -27,5 +28,9 @@ public class Stock extends Observable{
 	
 	public StockStatus getCurrentStockStatus() {
 		return statusList.get(statusList.size()-1);
+	}
+	
+	public String toString(){
+		return MessageFormat.format("{0}: {1}",stockSymbol, this.getCurrentStockStatus().toString());
 	}
 }

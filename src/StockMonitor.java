@@ -1,15 +1,16 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-public class StockMonitor implements Observer{
+public class StockMonitor extends Observable implements Observer{
 	
 	private static StockMonitor uniqueInstance;
 	
-	private StockMonitor() {}
+	private StockMonitor() {
+		EventManager.getInstance().Subscribe(this, EventType.All);
+	}
 	
-	private Map<String,Stock> stocks = new HashMap<String,Stock>(0);
+	private ArrayList<Stock> stocks = new ArrayList<Stock>();
 	
 	public static StockMonitor getInstance() {
 		if (uniqueInstance == null) {
@@ -20,9 +21,23 @@ public class StockMonitor implements Observer{
 	}
 
 	@Override
-	public void update(Observable stock, Object stockSymbol) {
-		if (!stocks.containsKey(stockSymbol)) {
-			stocks.put((String)stockSymbol, (Stock)stock);
+	public void update(Observable stock, Object eventType) {
+		EventType notificationType = (EventType) eventType;
+		if (notificationType == EventType.Create) {
+			stocks.add((Stock)stock);
 		}
+		
+		this.setChanged();
+		this.notifyObservers();
+	}
+	
+	public String toString(){
+		String monitorText = "";
+		
+		for(Stock s : stocks){
+			monitorText += "\n" + s.toString();
+		}
+		
+		return monitorText;
 	}
 }

@@ -9,7 +9,9 @@ public class StockBroker implements Observer{
 	
 	private Map<String,Stock> stocks = new HashMap<String,Stock>(0);
 		
-	private StockBroker() {}
+	private StockBroker() {
+		EventManager.getInstance().Subscribe(this, EventType.Create);
+	}
 	
 	public static StockBroker getInstance() {
 		
@@ -22,7 +24,8 @@ public class StockBroker implements Observer{
 
 	@Override
 	public void update(Observable stock, Object stockSymbol) {
-		stocks.put((String)stockSymbol, (Stock)stock); 
+		Stock newStock = (Stock) stock;
+		stocks.put(newStock.getStockSymbol(), newStock); 
 	}
 	
 	// What does he mean by this?

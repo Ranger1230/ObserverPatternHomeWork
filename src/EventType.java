@@ -1,5 +1,6 @@
 
 public enum EventType {
 	Create,
-	Update
+	Update,
+	All
 }
