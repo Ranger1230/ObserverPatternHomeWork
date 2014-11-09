@@ -43,7 +43,6 @@ public class AnyClient implements Observer {
 	private void initialize() {
 		StockBroker.getInstance();
 		StockMonitor.getInstance().addObserver(this);
-		new Stock("JPTest", new StockStatus(new Date(), 1.00));
 		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
@@ -51,6 +50,9 @@ public class AnyClient implements Observer {
 		
 		txtpnDisplayingSomeText = new JTextPane();
 		frame.getContentPane().add(txtpnDisplayingSomeText, BorderLayout.CENTER);
+		
+
+		new Stock("JPTest", new StockStatus(new Date(), 1.00));
 	}
 
 	@Override
